@@ -1,9 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.nav button {
+  all: unset;
+  margin-top: 5px;
+}
+
+.nav img {
+  border-radius: 50px;
+}
+
 #search-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 85vh;
   }
   
   #google-logo {
@@ -17,9 +43,9 @@
     align-items: center;
     border: 1px solid #dfe1e5;
     border-radius: 24px;
-    padding: 10px;
-    width: 70vw;
-    max-width: 800px;
+    padding: 5px;
+    width: 50vw;
+    max-width: 600px;
   }
   
   #search-input {
@@ -37,6 +63,7 @@
     cursor: pointer;
     display: flex;
     justify-content: flex-start;
+    margin-left: 5px;
   }
 
   .icons {
@@ -47,7 +74,8 @@
   #voice-search,
   #camera-search {
     align-items: center;
-    margin-left: 16px;
+    /* margin-left: 5px; */
+    margin-right: 5px;
     padding: 6px;
     border-radius: 50%;
     cursor: pointer;
@@ -91,4 +119,51 @@
   .search-button:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   }
+
+  .languages {
+    margin-top: 20px;
+  }
+
+  .languages a{
+    text-decoration: none;
+  }
+
+  .footer-top {
+    display: flex;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #dadce0;
+    color: #70757a;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .footer-top p {
+    margin-left: 10px;
+  }
   
+  .footer-bottom {
+    display: flex;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #dadce0;
+    color: #70757a;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+    gap: 65vw;
+  }
+
+  .footer-bottom .about {
+    display: flex;
+    flex-direction: row;
+    order: 1;
+    gap: 10px;
+    margin-left: 10px;
+  }
+
+  .footer-bottom .privacy {
+    display: flex;
+    flex-direction: row;
+    order: 2;
+    gap: 10px;
+  }
