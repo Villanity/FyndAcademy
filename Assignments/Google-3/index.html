@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Search Replica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+ 
+    .logo {
+      max-width: 272px;
+      width: 100%;
+    }
+ 
+    .search-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 2rem;
+    }
+ 
+    .search-input {
+      width: 500px;
+      height: 44px;
+      padding: 0 1rem;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      font-size: 16px;
+    }
+ 
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 1rem;
+    }
+ 
+    .search-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 44px;
+      background-color: #f8f9fa;
+      color: #3c4043;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      outline: none;
+    }
+ 
+    .search-button:hover {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo">
+ 
+  <input class="search-input" type="text" placeholder="Search Google or type a URL">
+  <div class="buttons-container">
+    <button class="search-button">Google Search</button>
+    <button class="search-button">I'm Feeling Lucky</button>
+  </div>
+</body>
+</html>

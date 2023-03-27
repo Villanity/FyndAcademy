@@ -1,0 +1,130 @@
+/* Reset styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* General styles */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  a {
+    color: #1a0dab;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Header styles */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  
+  header img {
+    height: 45px;
+  }
+  
+  header form {
+    display: flex;
+    align-items: center;
+  }
+  
+  header input[type="text"] {
+    height: 30px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  
+  header button[type="submit"] {
+    height: 30px;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  
+  header button[type="submit"]:hover {
+    background-color: #e6e6e6;
+  }
+  
+  /* Main styles */
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  main h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  main ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main li {
+    margin-bottom: 20px;
+  }
+  
+  main h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  main p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  
+  /* Footer styles */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  footer li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: #70757a;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
