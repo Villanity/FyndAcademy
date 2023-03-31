@@ -58,12 +58,15 @@
     </div>
 
     <script>
-      const searchForm = document.getElementById("search-form");
-      const searchInput = document.getElementById("search-input");
-      const searchButton = document.getElementById("search-button-id");
+      // const searchForm = document.getElementById("search-form");
+      // const searchInput = document.getElementById("search-input");
+      // const searchButton = document.getElementById("search-button-id");
 
-      searchForm.addEventListener("submit", performSearch);
-      searchButton.addEventListener("click", performSearch);
+      // searchForm.addEventListener("submit", performSearch);
+      // searchButton.addEventListener("click", performSearch);
+
+      document.getElementById("search-form").addEventListener("submit", performSearch);
+      document.getElementById("search-button-id").addEventListener("click", performSearch);
 
       function performSearch(e) {
           e.preventDefault(); 
@@ -72,6 +75,14 @@
           window.location.href = b;
           document.getElementById('search-input').value = ""; 
         };
+
+        // document.getElementById('search-button-id').addEventListener("click", function(e) {
+        //   e.preventDefault(); 
+        //   var a = document.getElementById('search-input').value;
+        //   var b = 'http://google.com/search?q=' + a;
+        //   window.location.href = b;
+        //   document.getElementById('search-input').value = "";
+        // });
         
     </script>
   </body>
