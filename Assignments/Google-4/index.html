@@ -18,7 +18,7 @@
       <img id="google-logo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo">
       </div>
      <div class="input-box">
-        <form id="search-form" onsubmit="this.action='http://google.com/search?q='+this.search-string.value;">
+        <form id="search-form" onsubmit="">
           <button type="submit" id="search-button"><img src="https://www.google.com/images/icons/material/system/1x/search_black_24dp.png" alt="Search Icon"></button>
           <input type="text" id="search-input" name="search-string">
           <div class="icons">
@@ -33,7 +33,8 @@
         </form>
       </div>
       <div class="buttons-container">
-        <button type="submit" value="submit" class="search-button">Google Search</button>
+        <!-- <button type="submit" value="submit" id="search-button-id" class="search-button">Google Search</button> -->
+        <button type="submit" value="submit" id="search-button-id" class="search-button" ondblclick="searchNow()">Google Search</button>
         <button type="submit" value="submit" class="search-button">I'm Feeling Lucky</button>
       </div>
       <div class="languages">
@@ -56,5 +57,16 @@
         <p>Settings</p>
       </div>
     </div>
+
+    <script>
+      document.getElementById('search-button-id').addEventListener("click", function(e) {
+          e.preventDefault(); 
+          var a = document.getElementById('search-input').value;
+          var b = 'http://google.com/search?q=' + a;
+          window.location.href = b;
+          document.getElementById('search-input').value = "";
+        });
+        
+    </script>
   </body>
 </html>
