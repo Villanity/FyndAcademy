@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keyboard Color Changer</title>
+    <style>
+      body {
+        background-color: white;
+        transition: background-color 0.5s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Type on your keyboard to change the background color</h1>
+    <script>
+      document.addEventListener("keydown", function(event) {
+        switch (event.key.toLowerCase()) {
+          case "r":
+            document.body.style.backgroundColor = "red";
+            break;
+          case "g":
+            document.body.style.backgroundColor = "green";
+            break;
+          case "b":
+            document.body.style.backgroundColor = "blue";
+            break;
+          default:
+            break;
+        }
+      });
+      
+      document.addEventListener("keyup", function(event) {
+        document.body.style.backgroundColor = "white";
+      });
+    </script>
+  </body>
+</html>

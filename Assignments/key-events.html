@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keyboard Events Example</title>
+  </head>
+  <body>
+    <h1>Press some keys on your keyboard</h1>
+    <script>
+      document.addEventListener("keydown", function(event) {
+        console.log("Key down:", event.key);
+      });
+      
+      document.addEventListener("keyup", function(event) {
+        console.log("Key up:", event.key);
+      });
+      
+      document.addEventListener("keypress", function(event) {
+        console.log("Key pressed:", event.key);
+      });
+    </script>
+  </body>
+</html>
