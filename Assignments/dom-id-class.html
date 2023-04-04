@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Form</title>
+  </head>
+  <body>
+    <form>
+      <label for="color">Favorite Color:</label>
+      <select id="color" name="color" onchange="changeColor()">
+        <option value="Select" selected disabled hidden>Select</option>
+        <option value="Red">Red</option>
+        <option value="Green">Green</option>
+        <option value="Blue">Blue</option>
+      </select><br>
+      <div id="color-message"></div>
+    </form>
+
+    <script>
+      function changeColor() {
+        const colorSelect = document.getElementById("color");
+        const selectedColor = colorSelect.value;
+        const colorMessageDiv = document.getElementById("color-message");
+        const whiteColor = "#fff";
+
+        colorMessageDiv.innerText = `Your favorite color is: ${selectedColor}`;
+        colorMessageDiv.style.background = selectedColor;
+        colorMessageDiv.style.color = whiteColor;
+      }
+    </script>
+  </body>
+</html>
