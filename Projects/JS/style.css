@@ -1,17 +1,94 @@
-.navbar a{
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+* {
+    font-family: 'Poppins', sans-serif;
 }
-.navbar a:hover{
+
+#hamburger{
+    /* float: right; */
+    /* padding: 20px; */
+    color: white;
+    
+}
+
+#logo {
+    /* float: left; */
+    padding: 20px;
+    margin-left: 30px;
     color: white;
 }
 
-.navbarScroll.navbarDark {
-    background-color: black;
+.nav-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(100vw - 25em);
+}
+
+
+.overlay{
+    height: 0%; 
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top:0;
+    left:0;
+    background-color: rgb(0,0,0);
+    background-color: rgb(0,0,0,0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+    
+}
+
+.overlay-content{
+    position: relative;
+    top:25%;
+    width:100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a{
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus{
+    color: #f1f1f1;
+}
+
+.overlay .closebtn{
+    position: absolute;
+    top: 20px;
+    right:45px;
+    font-size:60px;
+}
+
+@media screen and (max-heignt: 450px){
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+
+}
+
+@media screen and (max-heignt: 400px){
+
+    .nav-items #hamburger{
+        margin-left: 60px;
+    }
 }
 
 .bgimage {
     height:100vh;
-    background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+    background: url('https://64.media.tumblr.com/dbc0f79d317e6c2679d7ab61fed30fea/tumblr_ogysw3Onpu1vsjcxvo1_640.gif');
     background-size:cover;
     position:relative;
 }
