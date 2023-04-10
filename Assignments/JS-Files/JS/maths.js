@@ -88,4 +88,3 @@ Math.exp(2); // returns 7.38905609893065 (the exponential function of 2)
 // Math.floor(Math.random() * (max - min + 1) + min):
 
 Math.floor(Math.random() * (10 - 1 + 1) + 1); // returns a random integer between 1 and 10 (inclusive)
-
