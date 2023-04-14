@@ -8,6 +8,9 @@ let googleQuery = document.getElementById("googleQuery");
 let btnGoogle = document.getElementById("btnGoogle");
 let postTitle = document.getElementById("postTitle");
 let postBody = document.getElementById("postBody");
+let btnLess = document.getElementById("btnLess");
+let btnMore = document.getElementById("btnMore");
+let counter = document.getElementById("counter");
 // let videoPlayer = document.getElementById("videoPlayer");
 
 const url = "https://api.quotable.io/random";
@@ -104,39 +107,63 @@ function searchVideo() {
   xhr.send();
 }
 
-async function fetchData() {
-  const response = await fetch('https://dummyjson.com/posts?limit=6');
+let count = 3;
+
+async function fetchData(count) {
+  const postURL = 'https://dummyjson.com/posts?limit=' + count;
+  const response = await fetch(postURL);
   const data = await response.json();
   return data;
 }
 
-window.onload = async function() {
-  try {
-    const data = await fetchData();
-    const blogPosts = document.getElementById('blog-posts');
-    if (data && data.posts) {
-      for (let i = 0; i < data.posts.length; i++) {
-        const post = data.posts[i];
-        const postElement = document.createElement('div');
-        // postTitle.innerText = data.posts[i].title;
-        // postBody.innerText = data.posts[i].body;
-        postElement.classList.add("blogStyle");
-        postElement.innerHTML = `
-          <h3>${post.title}</h3>
-          <p>${post.body}</p>
-        `;
-        blogPosts.appendChild(postElement);
+btnLess.addEventListener("click", async function(e) {
+  if (count > 1) {
+    count = count - 1;
+    const data = await fetchData(count);
+    updatePosts(data);
+  }
+  if (count < 2) {
+    btnLess.disabled = true;
+  }
+});
+
+btnMore.addEventListener("click", async function(e) {
+  btnLess.disabled = false;
+  count = count + 1;
+  const data = await fetchData(count);
+  updatePosts(data);
+});
+
+function updatePosts(data) {
+  const blogPosts = document.getElementById('blog-posts');
+  blogPosts.innerHTML = '';
+  if (data && data.posts) {
+    for (let i = 0; i < data.posts.length; i++) {
+      const post = data.posts[i];
+      const postElement = document.createElement('div');
+      postElement.classList.add("blogStyle");
+      postElement.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.body}</p>
+        <button type="submit" class="btn btn-primary m-2">Read More</button>
+      `;
+      if (count == 1) {
+        counter.innerHTML = `<h6>${count} Post Loaded...</h6>`;
       }
-    } else {
-      console.error('Error retrieving blog posts from API');
+      else {
+        counter.innerHTML = `<h6>${count} Posts Loaded...</h6>`;
+      }
+      blogPosts.appendChild(postElement);
     }
-  } catch (error) {
-    console.error('Error fetching data:', error);
+  } else {
+    console.error('Error retrieving blog posts from API');
   }
 }
 
-
-
+window.onload = async function() {
+  const data = await fetchData(count);
+  updatePosts(data);
+};
 
 
 window.addEventListener("load", getQuote);
