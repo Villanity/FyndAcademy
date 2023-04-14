@@ -25,6 +25,7 @@ let getQuote = () => {
 };
 
 const API_KEY = "VdDXdXco-wYMjbKb3jfQ4KpDhh-kM2228_jkh-YKuy4";
+// This key has been generated using a burner account and might have been disabled by the time you see it. 
 
 let getImage = async () => {
   const query = document.getElementById("image-query").value;
@@ -46,15 +47,14 @@ function performSearch(e) {
   document.getElementById('googleQuery').value = ""; 
 };
 
-// "b5fa98c8ecaf54c7bde003547fb11193";
-
 function searchVideo() {
   // Get the search term from the input field
   const searchTerm = document.getElementById("videoQuery").value;
 
   // Construct the Vimeo API search URL
   const baseUrl = "https://api.vimeo.com/videos";
-  const accessToken = "b5fa98c8ecaf54c7bde003547fb11193";
+  const accessToken = "b5fa98c8ecaf54c7bde003547fb11193"; 
+  // This key has been generated using a burner account and might have been disabled by the time you see it. 
   const url = `${baseUrl}?query=${searchTerm}&access_token=${accessToken}`;
 
   // Send an AJAX request to the API
@@ -116,6 +116,8 @@ async function fetchData(count) {
   return data;
 }
 
+if (btnLess) {
+
 btnLess.addEventListener("click", async function(e) {
   if (count > 1) {
     count = count - 1;
@@ -127,12 +129,16 @@ btnLess.addEventListener("click", async function(e) {
   }
 });
 
-btnMore.addEventListener("click", async function(e) {
-  btnLess.disabled = false;
-  count = count + 1;
-  const data = await fetchData(count);
-  updatePosts(data);
-});
+}
+
+if (btnMore) {
+  btnMore.addEventListener("click", async function(e) {
+    btnLess.disabled = false;
+    count = count + 1;
+    const data = await fetchData(count);
+    updatePosts(data);
+  });
+}
 
 function updatePosts(data) {
   const blogPosts = document.getElementById('blog-posts');
