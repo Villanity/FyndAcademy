@@ -6,7 +6,7 @@
       <ul>
         <li v-for="product in Products" :key="product.id">{{ product.product }}</li>
 
-        <p v-for="product in Products" :key="product.id" :style="{backgroundColor: product.color} "> There are {{ cart }} items in the cart</p>
+        <p style="padding:20px" v-for="product in Products" :key="product.id" :style="{backgroundColor: product.color, color: product.text, width: product.width} "> There are {{ cart }} items in the cart</p>
         <button v-on:click="addToCart">Add to Cart</button>
         <button v-on:click="removeFromCart">Remove From Cart</button>
         {{ stockInfo }}
@@ -22,9 +22,9 @@
             urlMain : "https://google.com",
             Stock: 0,
             Products : [
-                {id: 1 , product: "Laptops", color: "green"},
-                {id: 2 , product: "Mobile", color: "blue"},
-                {id: 3 , product: "Computers", color: "red"}
+                {id: 1 , product: "Laptops", color: "green", text: "white", width: "50vw"},
+                {id: 2 , product: "Mobile", color: "blue", text: "white", width: "50vw"},
+                {id: 3 , product: "Computers", color: "red", text: "white", width: "50vw"}
         ],
         cart : 0,
         onSale : true,
