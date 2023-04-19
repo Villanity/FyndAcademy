@@ -7,14 +7,18 @@
         <li v-for="product in Products" :key="product.id">{{ product.product }}</li>
 
         <p style="padding:20px" v-for="product in Products" :key="product.id" :style="{backgroundColor: product.color, color: product.text, width: product.width} "> There are {{ cart }} items in the cart</p>
-        <button v-on:click="addToCart">Add to Cart</button>
-        <button v-on:click="removeFromCart">Remove From Cart</button>
+        <button class="btn btn-success" v-on:click="addToCart">Add to Cart</button>
+        <button class="btn btn-danger" v-on:click="removeFromCart">Remove From Cart</button>
         {{ stockInfo }}
       </ul>
+      <button class="btn btn-primary" @click="createPost()">Create Post</button>
     </div>
+
    </template>
    
    <script>
+   import axios from 'axios';
+
    export default {
      name: 'NavBar',
      data(){
@@ -35,8 +39,27 @@
             this.cart += 1;
         },
         removeFromCart() {
+
+          if (this.cart != 0) {
             this.cart -= 1;
-        }
+          }
+          else {
+            this.cart = 0;
+          }
+            
+        },
+        createPost() {
+        try {
+        const response = axios.post('https://jsonplaceholder.typicode.com/posts', {
+          title: 'New Post',
+          body: 'This is the body of the new post',
+          userId: 101
+        });
+        console.log(response.data, "Posted Successfully");
+      } catch (error) {
+        console.error(error);
+      }
+    }
      },
      computed: {
             stockInfo () {
