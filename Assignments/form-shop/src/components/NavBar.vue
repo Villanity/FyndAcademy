@@ -1,5 +1,11 @@
 <template>
     <div>
+      <nav>
+        <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/child">Child</router-link></li>
+          <li><router-link to="/parent">Parent</router-link></li>
+      </nav>
+
       <p v-if="Stock > 90"> Greater than 90</p>
       <p v-else-if="Stock < 50 && Stock > 10"> Less than 90</p>
       <p v-else> Almost Gone</p>
