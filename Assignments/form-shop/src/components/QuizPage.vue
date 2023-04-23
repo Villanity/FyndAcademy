@@ -1,8 +1,19 @@
 <template>
   <div class="content">
-    <center>
       <h2>{{ question }}</h2>
       <ul>
+
+        <!-- <p v-for="answer in answers"
+       :key="answer"
+       :class="{
+         'selected': selectedAnswer === answer,
+         'disabled': selectedAnswer !== null && selectedAnswer !== answer
+       }"
+       class="options"
+       @click="selectAnswer(answer)"
+       :disabled="selectedAnswer !== null && selectedAnswer !== answer">
+      {{ answer }}
+    </p> -->
 
         <div v-for="answer in answers" :key="answer">
 
@@ -11,12 +22,10 @@
           'incorrect': selectedAnswer !== correctAnswer && selectedAnswer !== null}" class="options" @click="selectedAnswer = answer, this.submitDisabled = false">{{ answer }}</p> -->
 
           <!-- <p class="options" @click="selectedAnswer = answer, this.submitDisabled = false">{{ answer }}</p> -->
-
-          <p :class="{
+              <p  :class="{
               'correct': selectedAnswer === correctAnswer,
               'incorrect': selectedAnswer !== correctAnswer && selectedAnswer !== null
-            }" class="options" @click="checkAnswer(answer, $event)">{{ answer }}</p>
-
+            }" class="options" @click="checkAnswer(answer, $event)" :disabled="selectedAnswer === answer">{{ answer }}</p>
 
         </div>
         <button class="btn btn-primary" id="submitAnswer" @click="loadQuestion()" :disabled="submitDisabled">Submit
@@ -24,7 +33,6 @@
       </ul>
 
       You Scored {{ score }} / {{ lengthData }} with {{ wrongScore }} wrong answers. 
-    </center>
 
   </div>
 </template>
@@ -55,7 +63,7 @@ export default {
         .then((data) => {
           data = data.quizData;
           var quizData = data[this.i];
-          console.log(data);
+          // console.log(data);
           this.quizData = quizData;
           this.quizID = quizData.id;
           this.question = quizData.question;
@@ -102,7 +110,7 @@ export default {
 
 <style>
 body {
-  background-color: rgb(22, 0, 37);
+  background-color: rgb(28, 0, 46);
   color: white;
 }
 
