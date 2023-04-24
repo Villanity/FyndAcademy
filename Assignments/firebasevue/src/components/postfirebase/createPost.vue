@@ -12,7 +12,7 @@
             <input type="text" class="form-group" v-model="description">
         </div>
         <div>
-            <button class="btn btn-success" >Create Post</button>
+            <button type="submit" class="btn btn-success" >Create Post</button>
         </div>
     </form>
 
@@ -36,7 +36,14 @@
                     title: this.title,
                     description: this.description
                     })
-                    .then((response) => response.json())
+                    .then((response) => {
+                        console.log(JSON.stringify(response.data));
+                        })
+                        .catch((error) => {
+                        console.log(error);
+                        });
+                        this.title = '',
+                        this.description = ''
             }
         }
     }
