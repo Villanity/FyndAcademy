@@ -6,24 +6,9 @@
       
       <ul>
 
-        <!-- <p v-for="answer in answers"
-       :key="answer"
-       :class="{
-         'selected': selectedAnswer === answer,
-         'disabled': selectedAnswer !== null && selectedAnswer !== answer
-       }"
-       class="options"
-       @click="selectAnswer(answer)"
-       :disabled="selectedAnswer !== null && selectedAnswer !== answer">
-      {{ answer }}
-    </p> -->
 
         <div v-for="answer in answers" :key="answer">
-          <!-- <p :class="{
-          'correct': selectedAnswer === correctAnswer,
-          'incorrect': selectedAnswer !== correctAnswer && selectedAnswer !== null}" class="options" @click="selectedAnswer = answer, this.submitDisabled = false">{{ answer }}</p> -->
 
-          <!-- <p class="options" @click="selectedAnswer = answer, this.submitDisabled = false">{{ answer }}</p> -->
               <p  :class="{
               'correct': selectedAnswer === correctAnswer,
               'incorrect': selectedAnswer !== correctAnswer && selectedAnswer !== null
@@ -86,14 +71,6 @@ export default {
         })
         .catch((error) => console.error(error));
     },
-
-    // checkAnswer(answer) {
-    //   if (answer === this.correctAnswer) {
-    //     this.score += 1;
-    //   }
-    //   this.selectedAnswer = null;
-    //   this.loadQuestion();
-    // }
 
     checkAnswer(answer, event) {
         const answerElement = event.target;
@@ -161,9 +138,7 @@ body {
 
 .question {
   padding: 40px;
-  /* width: auto; */
   font-weight: 700;
-  /* margin-left: 25px; */
 }
 
 .content {
@@ -172,7 +147,6 @@ body {
 
 .options {
   max-width: 600px;
-  /* background: rgb(131,58,180); */
   background: radial-gradient(circle, rgba(63,185,251,1) 0%, rgba(70,90,252,1) 100%);
   padding: 20px;
   color: white;
