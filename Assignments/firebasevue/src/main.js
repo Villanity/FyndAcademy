@@ -35,5 +35,3 @@ axios.defaults.baseURL="https://vuefynd-default-rtdb.asia-southeast1.firebasedat
 const app = createApp(App)
 app.use(router)
 app.mount('#app')
-
-// createApp(App).use(router).mount('#app');
