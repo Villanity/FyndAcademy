@@ -4,12 +4,13 @@
       <h2 class="question">{{ question }}</h2>
     </center>
     <ul>
-      <div v-for="answer in answers" :key="answer">
-        <p :class="{
+      <div>
+
+        <p v-for="answer in answers" :key="`${quizData.id}-${answer}`"  
+          :class="{
             'correct': selectedAnswer === correctAnswer,
             'incorrect': selectedAnswer !== correctAnswer && selectedAnswer !== null
-          }" class="options" @click.once="checkAnswer(answer, $event)" :disabled="selectedAnswer === answer">{{
-    answer }}</p>
+          }" class="options" @click.once="checkAnswer(answer, $event)" > {{ answer }} </p>
 
       </div>
       <button class="submitAnswer mt-2" id="submitAnswer" @click="loadQuestion()" :disabled="submitDisabled">Submit
@@ -71,6 +72,7 @@ export default {
 
     checkAnswer(answer, event) {
       const answerElement = event.target;
+      console.log(answer, this.correctAnswer,answerElement)
 
       if (answer === this.correctAnswer) {
         answerElement.classList.add('correct');
@@ -81,6 +83,7 @@ export default {
       }
 
       this.selectedAnswer = null;
+      answer = null;
       this.submitDisabled = false;
 
     },
@@ -176,7 +179,8 @@ body {
   border-radius: 5px;
   color: rgb(255, 255, 255);
   border: none;
-  cursor: crosshair;
+  /* cursor: crosshair; */
+  pointer-events: none;
 }
 
 .submitAnswer:enabled {
