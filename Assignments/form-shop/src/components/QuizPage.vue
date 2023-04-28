@@ -6,18 +6,17 @@
     <ul>
       <div>
 
-        <p v-for="answer in answers" :key="`${quizData.id}-${answer}`"  
-          :class="{
+        <p v-for="answer in answers" :key="`${quizData.id}-${answer}`" :class="{
             'correct': selectedAnswer === correctAnswer,
             'incorrect': selectedAnswer !== correctAnswer && selectedAnswer !== null
-          }" class="options" @click.once="checkAnswer(answer, $event)" > {{ answer }} </p>
+          }" class="options" @click.once="checkAnswer(answer, $event), disableParagraph()"> {{ answer }} </p>
 
       </div>
       <button class="submitAnswer mt-2" id="submitAnswer" @click="loadQuestion()" :disabled="submitDisabled">Submit
         Answer</button>
     </ul>
     <center>
-      You Scored {{ score }} / {{ lengthData }} .
+      <p>You Scored {{ score }} / {{ lengthData }} .</p>
 
     </center>
 
@@ -45,7 +44,7 @@ export default {
     this.loadQuestion();
   },
   methods: {
-    
+
     loadQuestion() {
       fetch("https://api.npoint.io/42fd33fb769deaa7fdc0")
         .then((response) => response.json())
@@ -70,9 +69,16 @@ export default {
         .catch((error) => console.error(error));
     },
 
+    disableParagraph() {
+      const paragraphs = document.querySelectorAll('p');
+      paragraphs.forEach((paragraph) => {
+        paragraph.style.pointerEvents = 'none';
+      });
+    },
+
     checkAnswer(answer, event) {
       const answerElement = event.target;
-      console.log(answer, this.correctAnswer,answerElement)
+      // console.log(answer, this.correctAnswer,answerElement)
 
       if (answer === this.correctAnswer) {
         answerElement.classList.add('correct');
@@ -191,4 +197,5 @@ body {
   color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
-}</style>
+}
+</style>
