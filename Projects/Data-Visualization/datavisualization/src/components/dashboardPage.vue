@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-4">
+  <div class="col-md-4" id="mainFrame">
     <div class="col">
       <div class="dataImport">
         <h2>Please choose your Data Source :</h2>
@@ -54,12 +54,15 @@ export default {
       chartType: "bar",
       showType: false,
       type: 'bar',
-      chartInstance: null
+      chartInstance: null,
+      jsonEvent: null,
+      apiURLType: '',
     }
   },
   methods: {
 
     importJSON(event) {
+      this.jsonEvent = event;
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
@@ -73,6 +76,7 @@ export default {
       }
     },
     async importFromAPI(apiURL) {
+      this.apiURLType = apiURL;
       // apiURL = 'https://api.npoint.io/8f97cfcef94b992f44f6';
       try {
         const response = await fetch(apiURL);
@@ -87,11 +91,26 @@ export default {
 
     setType() {
       this.type = this.chartType;
-      this.createChart();
+      const chartData = this.chartInstance.config.data;
+      this.createChart(chartData);
+      if (this.importSource === 'json') {
+        this.importJSON(this.jsonEvent);
+      }
+      else {
+        this.importFromAPI(this.apiURLType);
+      }
     },
 
     createChart(chartData) {
+
+      const labels = Array.from(chartData).map(row => row.year);
+      const data = Array.from(chartData).map(row => row.count);
+
+
       this.showType = true;
+      const typeChart = this.type;
+      console.log(typeChart);
+      console.log(chartData);
 
       const canvas = this.$refs.chartCanvas;
       const ctx = canvas.getContext('2d');
@@ -101,12 +120,12 @@ export default {
       }
 
       this.chartInstance = new Chart(ctx, {
-        type: this.type,
+        type: typeChart,
         data: {
-          labels: chartData.map(row => row.year),
+          labels,
           datasets: [{
             label: 'Acquisitions by year',
-            data: chartData.map(row => row.count)
+            data
           }]
         }
       });
