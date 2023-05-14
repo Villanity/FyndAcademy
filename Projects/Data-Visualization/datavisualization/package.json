@@ -10,6 +10,8 @@
   "dependencies": {
     "chart.js": "^4.3.0",
     "core-js": "^3.8.3",
+    "exceljs": "^4.3.0",
+    "papaparse": "^5.4.1",
     "vue": "^3.2.13"
   },
   "devDependencies": {

@@ -1,22 +1,18 @@
 <template>
-  <div class="col-md-4" id="mainFrame">
+  <div class="card" id="mainFrame">
     <div class="col">
       <div class="dataImport">
         <h2>Please choose your Data Source :</h2>
         <div class="importOptions">
           <select name="import-source" id="import-source" v-model="importSource">
             <option value="none" selected disabled>Select an Import Source</option>
-            <!-- <option value="xlsx">Excel</option> -->
             <option value="csv">EXCEL or CSV</option>
             <option value="json">JSON</option>
             <option value="api">API</option>
           </select>
         </div>
 
-        <div class="nextAction" id="nextAction">
-          <!-- <div v-if="importSource === 'xlsx'">
-            <input type="file" accept=".xlsx, .xls" @change="importExcel">
-          </div> -->
+        <div class="nextAction mt-2" id="nextAction">
           <div v-if="importSource === 'csv'">
             <input type="file" accept=".csv, .xlsx, .xls" @change="importCSV">
           </div>
@@ -75,7 +71,6 @@ export default {
     importCSV(event) {
       this.csvEvent = event;
       const file = event.target.files[0];
-
       // Convert Excel files to CSV format
       if (file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
         const reader = new FileReader();
@@ -191,7 +186,7 @@ export default {
         data: {
           labels,
           datasets: [{
-            label: 'Acquisitions by year',
+            label: "Imported Data",
             data
           }]
         }
@@ -201,3 +196,15 @@ export default {
   }
 }
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+#mainFrame {
+  max-height: 90vh;
+}
+</style>
