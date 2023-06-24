@@ -1,10 +1,10 @@
 <template>
-  <div class="card" id="mainFrame">
-    <div class="col">
+  <div id="mainFrame">
+    <h2 class="chooseH2">Data Visualizer</h2>
+    <div class="">
       <div class="dataImport">
-        <h2>Please choose your Data Source :</h2>
-        <div class="importOptions">
-          <select name="import-source" id="import-source" v-model="importSource">
+        <div class="importOptions" style="width: 20vw; margin-top: 5px;">
+          <select class="form-control" name="import-source" id="import-source" v-model="importSource">
             <option value="none" selected disabled>Select an Import Source</option>
             <option value="csv">EXCEL or CSV</option>
             <option value="json">JSON</option>
@@ -14,39 +14,47 @@
 
         <div class="nextAction mt-2" id="nextAction">
           <div v-if="importSource === 'csv'">
-            <input type="file" accept=".csv, .xlsx, .xls" @change="importCSV">
+            <input class="form-control" type="file" accept=".csv, .xlsx, .xls" @change="importCSV" style="width: 20vw;">
           </div>
           <div v-else-if="importSource === 'json'">
-            <input type="file" accept=".json" @change="importJSON">
+            <input class="form-control" type="file" accept=".json" @change="importJSON" style="width: 20vw;">
           </div>
+
           <div v-else-if="importSource === 'api'">
-            <label for="APIField">Please enter the URL</label>
-            <input type="text" name="APIField" id="APIField" v-model="apiLink">
-            <button @click="importFromAPI(apiLink)"> Fetch </button>
+            <div style="display: flex; flex-direction: row; gap: 10px;">
+              <!-- <label for="APIField">Please enter the URL &nbsp;</label> -->
+              <input class="form-control" type="text" placeholder="Please enter the URL" name="APIField" id="APIField"
+                v-model="apiLink" style="width: 20vw; margin-bottom: 5px;">
+              <button class="btn btn-primary" @click="importFromAPI(apiLink)"> Fetch </button>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="showType != false">
+          <div class="chartType" style="width: 20vw; margin-top: 5px;">
+            <!-- <label for="chart-type" style="margin-bottom: 5px;">Please select Chart Type &nbsp; </label> -->
+            <select class="form-control" name="chart-type" id="chart-type" v-model="chartType" @change="setType">
+              <option value="bar">Bar</option>
+              <option value="line">Line</option>
+              <option value="bubble">Bubble</option>
+              <option value="doughnut">Doughnut</option>
+              <option value="pie">Pie</option>
+              <option value="polarArea">Polar Area</option>
+              <option value="radar">Radar</option>
+              <option value="scatter">Scatter</option>
+            </select>
           </div>
         </div>
       </div>
 
-      <div v-if="showType != false">
-        <div class="chartType">
-          <select name="chart-type" id="chart-type" v-model="chartType" @change="setType">
-            <option value="bar">Bar</option>
-            <option value="line">Line</option>
-            <option value="bubble">Bubble</option>
-            <option value="doughnut">Doughnut</option>
-            <option value="pie">Pie</option>
-            <option value="polarArea">Polar Area</option>
-            <option value="radar">Radar</option>
-            <option value="scatter">Scatter</option>
-          </select>
-        </div>
-      </div>
 
-      <canvas ref="chartCanvas"></canvas>
+
+      <canvas class="canvas" ref="chartCanvas"></canvas>
 
     </div>
   </div>
 </template>
+
 <script>
 import Chart from 'chart.js/auto';
 import Papa from 'papaparse';
@@ -187,7 +195,8 @@ export default {
           labels,
           datasets: [{
             label: "Imported Data",
-            data
+            data,
+            // backgroundColor: '#6649b5'
           }]
         }
       });
@@ -195,6 +204,7 @@ export default {
 
   }
 }
+
 </script>
 
 <style>
@@ -204,7 +214,35 @@ export default {
   font-family: 'Lato', sans-serif;
 }
 
-#mainFrame {
-  max-height: 90vh;
+
+.canvas {
+  max-height: 80vh;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.dataImport {
+  max-height: 40vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: linear-gradient(to left, #6649b5, #3555d4);
+  gap: 20px;
+}
+
+.dataImport input {
+  width: 50vw;
+}
+
+.chooseH2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: aliceblue;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(to left, #6649b5, #3555d4);
 }
 </style>
